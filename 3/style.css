@@ -1,0 +1,36 @@
+.rating {
+	float: left;
+}
+
+.rating label {
+	float:right; 
+	width:16px; 
+	height: 16px; 
+	overflow:hidden;
+	white-space:nowrap;
+	cursor:pointer; 
+	text-indent: -9999px; 
+}
+
+.rating:not(:checked) > input { 
+	position:absolute; 
+	top:-9999px; 
+}
+
+.rating:not(:checked) > label {
+	background: url('star.png') no-repeat 0 -16px;
+}
+	
+.rating > input:checked ~ label {
+	width: 16px;
+	height: 16px;
+	background: url('star.png') no-repeat 0 0px;
+}
+
+.rating:not(:checked) > label:hover,
+	.rating > input:checked + label:hover,
+	.rating > input:checked + label:hover ~ label,
+	.rating > label:hover ~ input:checked ~ label,
+	.rating:not(:checked) > label:hover ~ label {
+		background: url('star.png') no-repeat 0 0;
+	}
