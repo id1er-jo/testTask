@@ -168,7 +168,7 @@ class workWithBasket {
 	}
 
 
-/*** Метод для отправки письма штатным PHP ***/
+/*** Метод для рассылки штатным PHP ***/
 	function wwb_beginSending($arUsers) {
 		$mailsLimit = $this->mailsLimit;
 		$i = 0;	
@@ -187,10 +187,10 @@ class workWithBasket {
 				);
 			
 				$prepareArrayToSend = $this->wwb_prepareArrayToSend($loadArray);
-				$this->wwb_printData($prepareArrayToSend['MESSAGE']);
+				//$this->wwb_printData($prepareArrayToSend['MESSAGE']);
 				
-				//$sendMail = $this->sendMail($prepareArrayToSend); 	
-				//$this->add2Log($sendMail);
+				$sendMail = $this->wwb_sendMail($prepareArrayToSend); 	
+				$this->wwb_add2Log($sendMail);
 				
 				if ($i > $mailsLimit) {
 		
@@ -201,8 +201,6 @@ class workWithBasket {
 				}
 
 				$i++;
-				
-				$this->wwb_add2Log("Письмо отправлено: " . $user['EMAIL'] );
 				
 			} else {
 				$this->wwb_add2Log("Отложенных товаров для " . $user['EMAIL'] . " нет.");
